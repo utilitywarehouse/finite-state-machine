@@ -276,11 +276,7 @@ func TestBeforeEventWithoutTransition(t *testing.T) {
 		},
 	)
 
-	err := fsm.Event("dontrun")
-	if e, ok := err.(NoTransitionError); !ok && e.Err != nil {
-		t.Error("expected 'NoTransitionError' without custom error")
-	}
-
+	fsm.Event("dontrun")
 	if fsm.Current() != "start" {
 		t.Error("expected state to be 'start'")
 	}
@@ -604,20 +600,6 @@ func TestDoubleTransition(t *testing.T) {
 		fmt.Println(err)
 	}
 	wg.Wait()
-}
-
-func TestNoTransition(t *testing.T) {
-	fsm := NewFSM(
-		"start",
-		Events{
-			{Name: "run", Src: []string{"start"}, Dst: "start"},
-		},
-		Callbacks{},
-	)
-	err := fsm.Event("run")
-	if _, ok := err.(NoTransitionError); !ok {
-		t.Error("expected 'NoTransitionError'")
-	}
 }
 
 func ExampleNewFSM() {

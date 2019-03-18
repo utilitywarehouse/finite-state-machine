@@ -51,17 +51,6 @@ func TestNotInTransitionError(t *testing.T) {
 	}
 }
 
-func TestNoTransitionError(t *testing.T) {
-	e := NoTransitionError{}
-	if e.Error() != "no transition" {
-		t.Error("NoTransitionError string mismatch")
-	}
-	e.Err = errors.New("no transition")
-	if e.Error() != "no transition with error: "+e.Err.Error() {
-		t.Error("NoTransitionError string mismatch")
-	}
-}
-
 func TestCanceledError(t *testing.T) {
 	e := CanceledError{}
 	if e.Error() != "transition canceled" {

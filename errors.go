@@ -52,19 +52,6 @@ func (e NotInTransitionError) Error() string {
 	return "transition inappropriate because no state change in progress"
 }
 
-// NoTransitionError is returned by FSM.Event() when no transition have happened,
-// for example if the source and destination states are the same.
-type NoTransitionError struct {
-	Err error
-}
-
-func (e NoTransitionError) Error() string {
-	if e.Err != nil {
-		return "no transition with error: " + e.Err.Error()
-	}
-	return "no transition"
-}
-
 // CanceledError is returned by FSM.Event() when a callback have canceled a
 // transition.
 type CanceledError struct {

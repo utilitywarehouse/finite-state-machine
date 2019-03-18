@@ -1,1 +1,1 @@
-module github.com/looplab/fsm
+module github.com/utilitywarehouse/finite-state-machine
