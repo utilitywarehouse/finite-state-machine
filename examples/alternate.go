@@ -4,7 +4,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/looplab/fsm"
+
+	fsm "github.com/utilitywarehouse/finite-state-machine"
 )
 
 func main() {
